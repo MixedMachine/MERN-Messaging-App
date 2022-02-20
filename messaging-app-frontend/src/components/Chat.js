@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react'
 import { Avatar, IconButton } from '@material-ui/core';
 import {AttachFile, InsertEmoticon, MoreVert, SearchOutlined} from '@material-ui/icons';
 import MicIcon from '@material-ui/icons/Mic';
-import axios from './axios';
+import instance from './axios';
 import './Chat.css';
 
 const Chat = ({ messages }) => {
@@ -10,7 +10,7 @@ const Chat = ({ messages }) => {
     const [input, setInput] = useState("");
     const sendMessage = async (e) => {
         e.preventDefault();
-        await axios.post('/messages/new', {
+        await instance.post('/messages/new', {
             message: input,
             name: "Mike",
             timestamp: new Date().toUTCString(),
